@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function Stack() {
+        let items = []
+
+        //添加元素
+        this.push = function(ele) {
+            items.push(ele)
+        }
+
+        // 栈顶移除
+        this.pop = function(ele) {
+            return items.pop()
+        }
+
+        // 查看栈顶元素
+        this.peek - function() {
+            return items[items.length - 1]
+        }
+
+        // 查看栈是否为空
+        this.isEmpty = function() {
+            return items.length == 0
+        }
+
+        // 栈的长度
+        this.size = function() {
+            return items.length
+        }
+
+        // 清空栈
+        this.clear = function() {
+            items = []
+        }
+
+        // 将栈中元素输出值控制台
+        this.print = function() {
+            console.log(items.toString())
+        }
+    }
+
+    // 使用
+    let stack = new Stack()
+    console.log(stack.isEmpty())
+
+    // 应用
+
+    // 十进制转化二进制
+    function divideBy2(decNumber, base = 2) {
+        var remStack = new Stack(),
+            rem, // 余数
+            binaryString = '', // 存放最后的二进制数
+            digits = '0123456789ABCDEF'; // base 8,16
+
+        while (decNumber > 0) {
+            rem = Math.floor(decNumber % base)
+            remStack.push(rem)
+            decNumber = Math.floor(decNumber / base)
+        }
+
+        while (!remStack.isEmpty()) { // 当栈不为空时,拼接字符串
+            binaryString += digits[remStack.pop()]
+        }
+
+        return binaryString
+
+    }
+
+    console.log(divideBy2(17, 16))
+
+    // 平衡圆括号
+    function isBracketBalanced(str) {
+    	
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>链表</title>
+</head>
+
+<body>
+    <script>
+    function LinkedList() {
+        let Node = function(element) { //node 辅助类，表示要加入的项
+            this.element = element
+            this.next = next
+        }
+
+        let length = 0; //存储列表项
+        let head = null; //存储第一个节点
+
+        // 向尾部添加一项
+        this.append = function(element) {
+            let node = new Node(element), //
+                current;
+
+            if (head === null) { //head指向null-链表为空
+                head = node
+            } else {
+                current = head
+
+                // 循环链表，直到找到最后一项
+                while (current.next) {
+                    current = current.next
+                }
+
+                // 找到最后一项，将next赋值为node，建立链接
+                current.next = node
+            }
+
+            length++; //更新链表长度
+        }
+        this.insert = function(positon, element) {}
+        this.removeAt = function(position) {}
+
+        // 从链表中移除元素-1.移除第一个元素 2.移除第一个以外的任一元素
+        this.remove = function(position) {
+        	// 如果位置有效，查找并移除，位置无效返回null
+            if (position > -1 && position < length) { // 验证这个位置是有效的-从0到列表长度size-1都是有效位置
+                var current = head,
+                    previous,//前一个元素
+                    index = 0;// 控制递增
+
+                // 移除第一项
+                if (position === 0) {
+                    head = current.next
+                } else {
+                    // 移除第一个以外的任一元素-中间或最后一项
+                    while (index++ < position) {
+                        previous = current
+                        current = current.next
+                    }
+
+                    // 将previous与current的下一项链接起来：跳过current，从而移除它
+                    previous.next = current.next
+                }
+
+                length--
+
+                return current.element
+            }else{
+            	return null
+            }
+        }
+        this.indexOf = function(element) {}
+        this.isEmpty = function() {}
+        this.size = function() {}
+        this.getHead = function() {}
+        this.toString = function() {}
+        this.print = function() {}
+    }
+    </script>
+</body>
+
+</html>

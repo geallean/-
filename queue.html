@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function Queue() {
+        let items = []
+
+        // 添加元素
+        this.enqueue = function(ele) {
+            items.push(ele)
+        }
+
+        // 移除元素
+        this.dequeue = function() {
+            return items.shift()
+        }
+
+        // 查看队头元素
+        this.front = function() {
+            return items[0]
+        }
+
+        // 检查队列是否为空
+        this.isEmpty = function() {
+            return items.length == 0
+        }
+
+        // 打印队列元素
+        this.print = function() {
+            console.log(items.toString())
+        }
+    }
+
+    // 使用队列
+    let queue = new Queue()
+    console.log(queue.isEmpty())
+
+    // 优先队列
+    function PriorityQueue() {
+        let items = []
+        // 创建一个内部类,包含要添加到队列的元素及在队列中的优先级
+        function QueueElement(element, priority) {
+            this.element = element
+            this.priority = priority
+        }
+    }
+
+    // 循环队列 击鼓传花
+    function hotPotatao(nameList, num) {
+        let queue = new Queue() //queue类
+
+        for (let i = 0; i < nameList.length; i++) {
+            queue.enqueue(nameList[i]); // 把里面的名字全部都加入队列
+        }
+
+        let eliminated = ''
+        while (queue.size() > 1) { // 给定一个数字，迭代队列
+            for (let i = 0; i < num; i++) {
+                queue.enqueue(queue.dequeue()) // 从队列开头移除一项，再将其添加到队列末尾
+            }
+            eliminated = queue.dequeue() // 传递次数达到给定数字，拿着花的被淘汰
+            console.log(eliminated + '被淘汰')
+        }
+
+        return queue.dequeue() //最后剩下一人为胜者
+    }
+    </script>
+</body>
+
+</html>
